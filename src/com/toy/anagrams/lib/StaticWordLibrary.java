@@ -110,18 +110,52 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public String getScrambledWord(int idx) {
-    	return scrambled(idx);
-    }
     
-    public String scrambled(int idx) {
-    	String a=WORD_LIST[idx];
-        char[] c=a.toCharArray();
-        Arrays.sort(c);
-        String b=new String(c);
-    	return b;
-    }
-
+    public String getScrambledWord(int idx) {
+        return scrambled(idx);
+       }
+       
+       public String scrambled(int idx) {
+        String a=WORD_LIST[idx];
+           char[] c=a.toCharArray();
+           char d;
+           d = c[0];
+           c[0]=c[c.length-1];
+           c[c.length-1]=d;
+           String b=new String(c);
+        return b;
+       }
+       
+       public String getScrambledWord2(int idx) {
+        return scrambled2(idx);
+       }
+       
+       public String scrambled2(int idx) {
+        String a=WORD_LIST[idx];
+           char[] c=a.toCharArray();
+           char d;
+           d = c[0];
+           c[0]=c[c.length-1];
+           c[c.length-1]=d;
+           d = c[1];
+           c[1]=c[c.length-2];
+           c[c.length-1]=d;
+           String b=new String(c);
+        return b;
+       }
+       
+       public String getScrambledWord3(int idx) {
+        return scrambled3(idx);
+       }
+       
+       public String scrambled3(int idx) {
+        String a=WORD_LIST[idx];
+           char[] c=a.toCharArray();
+           Arrays.sort(c);
+           String b=new String(c);
+        return b;
+       }
+       
     /**
      * Gets the number of words in the library.
      * @return the total number of plain/scrambled word pairs in the library
