@@ -31,6 +31,8 @@
 
 package com.toy.anagrams.lib;
 
+import java.util.Arrays;
+
 /**
  * Implementation of the logic for the Anagram Game application.
  */
@@ -83,56 +85,8 @@ final class StaticWordLibrary extends WordLibrary {
         "unsigned",
         "train",
         "USA"
-        };
-
-    private static final String[] SCRAMBLED_WORD_LIST = {
-        "batsartcoin",
-        "maibuguos",
-        "ratimhteci",
-        "abkclssha",
-        "ibmtpa",
-        "iccrmutsnaec",
-        "ocbmnitaoni",
-        "ocsnqeeutnyl",
-        "ocsnroitmu",
-        "edrcmeneitgn",
-        "edepdnneyc",
-        "idasbmgiauet",
-        "ydanicm",
-        "neacsplutaoni",
-        "qeiuaveltn",
-        "xerpseisno",
-        "aficilatet",
-        "rfgaemtn",
-        "ehaxedicalm",
-        "milpmeneatitno",
-        "niidtsniugsiahleb",
-        "niehiratcen",
-        "nietnret",
-        "ajav",
-        "olacilazitno",
-        "imrcpoorecssro",
-        "anivagitno",
-        "poitimazitno",
-        "aparemert",
-        "aprtcki",
-        "ipkcel",
-        "opylomprich",
-        "irogorsuyl",
-        "isumtlnaoesuyl",
-        "psceficitaoni",
-        "tsurtcreu",
-        "elixalc",
-        "ilekiwse",
-        "amanegemtn",
-        "aminupalet",
-        "amhtmetacsi",
-        "ohjtvaa",
-        "evtrxe",
-        "nuisngde",
-        "iratn",
-        "SAU"
     };
+    
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
@@ -157,7 +111,15 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+    	return scrambled(idx);
+    }
+    
+    public String scrambled(int idx) {
+    	String a=WORD_LIST[idx];
+        char[] c=a.toCharArray();
+        Arrays.sort(c);
+        String b=new String(c);
+    	return b;
     }
 
     /**
