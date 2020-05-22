@@ -85,6 +85,18 @@ public class Anagrams extends JFrame {
         initComponents();
         getRootPane().setDefaultButton(guessButton);
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        selectLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                levelPerformed(evt);
+                if(selectLevel.getSelectedItem()=="Level 1") {
+                	scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+                }else if(selectLevel.getSelectedItem()=="Level 2") {
+                	scrambledWord.setText(wordLibrary.getScrambledWord2(wordIdx));
+                }else {
+                	scrambledWord.setText(wordLibrary.getScrambledWord3(wordIdx));
+                }
+            }
+        });
         pack();
         guessedWord.requestFocusInWindow();
         // Center in the screen
@@ -252,6 +264,11 @@ public class Anagrams extends JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new About(this).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
+    
+    private void levelPerformed(java.awt.event.ActionEvent evt) {
+    	feedbackLabel.setText("aa");
+        selectLevel.setEnabled(true);;
+    }
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
         wordIdx = (wordIdx + 1) % wordLibrary.getSize();
@@ -267,7 +284,7 @@ public class Anagrams extends JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
+    
     private void guessedWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guessedWordActionPerformed
         if (wordLibrary.isCorrect(wordIdx, guessedWord.getText())){
             feedbackLabel.setText("Correct! Try a new word!");
